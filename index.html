@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample App</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-slate-900 text-slate-200">
+
+    <div class="flex flex-col md:flex-row h-screen">
+    
+        <!-- Sidebar -->
+        <aside class="hidden md:block w-64 bg-slate-900 border-r border-slate-800 p-6">
+    
+            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-6">
+                Navigation
+            </h2>
+    
+            <ul class="space-y-3 text-sm">
+    
+                <li class="text-slate-400 hover:text-white cursor-pointer">
+                    Products
+                </li>
+    
+                <li class="text-slate-400 hover:text-white cursor-pointer">
+                    Deployments
+                </li>
+    
+                <li class="text-slate-400 hover:text-white cursor-pointer">
+                    Activity
+                </li>
+    
+                <li class="text-slate-400 hover:text-white cursor-pointer">
+                    Domains
+                </li>
+    
+            </ul>
+    
+        </aside>
+    
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+    
+            <!-- Top Bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+    
+                <input type="text"
+                       placeholder="Search products..."
+                       class="w-full sm:w-96 bg-slate-800 text-sm px-4 py-2 rounded-lg w-96 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+    
+                <button class="w-full sm:w-auto bg-indigo-600 text-sm px-4 py-2 rounded-lg hover:bg-indigo-500 transition">
+                    + New Product
+                </button>
+    
+            </div>
+
+            <!--Products Bar-->
+            <div id="Products" class="grid gap-4">
+
+            </div>
+    
+        </main>
+    
+        <!-- Activity Panel -->
+        <aside class="hidden lg:block w-80 bg-slate-900 border-l border-slate-800 p-6">
+    
+            <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-6">
+                Activity Feed
+            </h2>
+    
+            <div class="space-y-5 text-sm">
+    
+                <div>
+
+                    <p class="font-medium text-white">
+                        Peter Zhang
+                    </p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                        Completed Two Orders
+                    </p>
+
+                </div>
+    
+                <div>
+
+                    <p class="font-medium text-white">
+                        Stephen Yuan
+                    </p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                        Completed One Order
+                    </p>
+
+                </div>
+    
+            </div>
+    
+        </aside>
+    
+    </div>
+    
+</body>
+
+</html>
