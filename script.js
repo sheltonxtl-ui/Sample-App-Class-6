@@ -63,6 +63,54 @@ function renderProducts(products) {
   })
 }
 
+async function loadActivityFeed() {
+  console.log("Fetching activity...")
+
+  const { data, error } = await supabaseClient
+    .from('Order')   
+    .select('customer_id')
+
+  if (error) {
+    console.error("Activity Error:", error.message)
+    return
+  }
+
+  if (!data || data.length === 0) {
+    console.log("No orders found.")
+    return
+  }
+
+  // Count orders per customer
+  const orderCount = {}
+
+  data.forEach(order => {
+    const id = order.customer_id
+    orderCount[id] = (orderCount[id] || 0) + 1
+  })
+
+  const feedContainer = document.getElementById("activity-feed")
+  feedContainer.innerHTML = ""
+
+  Object.keys(orderCount).forEach(customer => {
+    const item = document.createElement("div")
+
+    item.className =
+      "bg-slate-800 p-4 rounded-lg border border-slate-700"
+
+    item.innerHTML = `
+      <p class="text-white font-medium">
+        Customer ${customer}
+      </p>
+      <p class="text-slate-400 text-xs mt-1">
+        Ordered ${orderCount[customer]} time(s)
+      </p>
+    `
+
+    feedContainer.appendChild(item)
+  })
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   getProducts()
+  loadActivityFeed()
 })
