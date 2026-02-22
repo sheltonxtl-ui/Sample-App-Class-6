@@ -95,15 +95,21 @@ async function loadActivityFeed() {
     const item = document.createElement("div")
 
     item.className =
-      "bg-slate-800 p-4 rounded-lg border border-slate-700"
-
+    "bg-slate-800 hover:bg-slate-750 transition-all duration-200 p-4 rounded-xl border border-slate-700 flex justify-between items-center"
+  
     item.innerHTML = `
-      <p class="text-white font-medium">
-        Customer ${customer}
-      </p>
-      <p class="text-slate-400 text-xs mt-1">
-        Ordered ${orderCount[customer]} time(s)
-      </p>
+      <div>
+        <p class="text-sm font-medium text-white">
+          Customer ${customer}
+        </p>
+        <p class="text-xs text-slate-400 mt-1">
+          Ordered ${orderCount[customer]} time(s)
+        </p>
+      </div>
+    
+      <span class="text-xs bg-indigo-600/20 text-indigo-400 px-3 py-1 rounded-full">
+        ${orderCount[customer]} Orders
+      </span>
     `
 
     feedContainer.appendChild(item)
